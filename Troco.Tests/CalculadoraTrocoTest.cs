@@ -21,4 +21,18 @@ public class CalculadoraTrocoTest
         Assert.Contains((1, 0.10m), resultado);
         Assert.Contains((1, 0.05m), resultado);
     }
+
+    [Fact]
+    public void Calcular_DeveRetornarTrozoZero_QuandoValorPagoIgualCompra()
+    {
+        var calculadora = new CalculadoraTroco();
+        decimal valorCompra = 50.00m;
+        decimal valorPago = 50.00m;
+        decimal trocoEsperado = 00.00m;
+
+        var resultado = calculadora.Calcular(valorCompra, valorPago);
+        var troco = resultado.Sum(x => x.quantidade * x.valor);
+        Assert.Equal(trocoEsperado, troco);
+        Assert.Empty(resultado);
+    }
 }
