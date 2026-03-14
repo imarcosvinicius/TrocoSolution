@@ -1,8 +1,22 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Troco.Tests", "Troco.Tests\Troco.Tests.csproj", "{F66E26AB-8060-4C92-86C6-FFF2878D9BDC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Troco.Domain", "Troco.Domain\Troco.Domain.csproj", "{512FC49B-6553-41C7-9119-08EDE09062B4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F66E26AB-8060-4C92-86C6-FFF2878D9BDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F66E26AB-8060-4C92-86C6-FFF2878D9BDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F66E26AB-8060-4C92-86C6-FFF2878D9BDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F66E26AB-8060-4C92-86C6-FFF2878D9BDC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{512FC49B-6553-41C7-9119-08EDE09062B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{512FC49B-6553-41C7-9119-08EDE09062B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{512FC49B-6553-41C7-9119-08EDE09062B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{512FC49B-6553-41C7-9119-08EDE09062B4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
