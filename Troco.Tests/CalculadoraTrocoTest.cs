@@ -13,8 +13,8 @@ public class CalculadoraTrocoTest
         decimal trocoEsperado = 32.65m;
 
         var resultado = calculadora.Calcular(valorCompra, valorPago);
-        var troco = resultado.Sum(x => x.quantidade * x.valor);
-        Assert.Equal(trocoEsperado, troco);
+
+        Assert.Equal(trocoEsperado, resultado.SomarTotal());
         Assert.Contains((3, 10.00m), resultado);
         Assert.Contains((2, 1.00m), resultado);
         Assert.Contains((1, 0.50m), resultado);
@@ -31,8 +31,8 @@ public class CalculadoraTrocoTest
         decimal trocoEsperado = 00.00m;
 
         var resultado = calculadora.Calcular(valorCompra, valorPago);
-        var troco = resultado.Sum(x => x.quantidade * x.valor);
-        Assert.Equal(trocoEsperado, troco);
+
+        Assert.Equal(trocoEsperado, resultado.SomarTotal());
         Assert.Empty(resultado);
     }
 }
