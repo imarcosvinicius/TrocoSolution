@@ -1,4 +1,6 @@
-﻿namespace Troco.Domain;
+﻿using Troco.Domain.exceptions;
+
+namespace Troco.Domain;
 
 public class CalculadoraTroco
 {
@@ -14,6 +16,11 @@ public class CalculadoraTroco
     
     public List<(int quantidade, decimal valor)> Calcular(decimal valorCompra, decimal valorPago)
     {
+        if (valorCompra > valorPago)
+        {
+            throw new ValorPagoInsuficienteException(valorCompra, valorPago);
+        }
+        
         var troco = (int)Math.Round((valorPago - valorCompra) * 100);
         var resultado = new List<(int, decimal)>();
 

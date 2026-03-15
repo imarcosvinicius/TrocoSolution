@@ -1,4 +1,5 @@
 using Troco.Domain;
+using Troco.Domain.exceptions;
 
 namespace Troco.Tests;
 
@@ -34,5 +35,16 @@ public class CalculadoraTrocoTest
 
         Assert.Equal(trocoEsperado, resultado.SomarTotal());
         Assert.Empty(resultado);
+    }
+
+    [Fact]
+    public void Calcular_DeveLancarExecao_QuandoValorPagoInsuficiente()
+    {
+        var calculadora = new CalculadoraTroco();
+        decimal valorCompra = 75.35m;
+        decimal valorPago = 50.00m;
+        
+        var exception = Assert.Throws<ValorPagoInsuficienteException>(() => calculadora.Calcular(valorCompra, valorPago));
+        Assert.Equal($"O valor pago (R$ {valorPago}) é insuficiente para cobrir a compra de (R$ {valorCompra}).", exception.Message);
     }
 }
