@@ -1,4 +1,4 @@
-﻿using Troco.Domain.exceptions;
+﻿using Troco.Domain.Exceptions;
 
 namespace Troco.Domain;
 

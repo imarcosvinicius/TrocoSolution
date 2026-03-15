@@ -1,4 +1,4 @@
-﻿namespace Troco.Domain.exceptions;
+﻿namespace Troco.Domain.Exceptions;
 
 public class ValorPagoInsuficienteException : ArgumentException
 {
