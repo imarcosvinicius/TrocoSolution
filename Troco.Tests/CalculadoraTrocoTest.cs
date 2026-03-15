@@ -47,4 +47,23 @@ public class CalculadoraTrocoTest
         var exception = Assert.Throws<ValorPagoInsuficienteException>(() => calculadora.Calcular(valorCompra, valorPago));
         Assert.Equal($"O valor pago (R$ {valorPago}) é insuficiente para cobrir a compra de (R$ {valorCompra}).", exception.Message);
     }
+
+    [Fact]
+    public void CalcularDeveFuncionarCorretamente_ParaValoresElevados()
+    {
+        var calculadora = new CalculadoraTroco();
+        decimal valorCompra = 1_000_000.00m;
+        decimal valorPago = 1_000_187.35m;
+        decimal trocoEsperado = 187.35m;
+
+        var resultado = calculadora.Calcular(valorCompra, valorPago);
+        Assert.Equal(trocoEsperado, resultado.SomarTotal());
+        Assert.Contains((1, 100.00m), resultado);
+        Assert.Contains((1, 50.00m), resultado);
+        Assert.Contains((3, 10.00m), resultado);
+        Assert.Contains((1, 5.00m), resultado);
+        Assert.Contains((2, 1.00m), resultado);
+        Assert.Contains((3, 0.10m), resultado);
+        Assert.Contains((1, 0.05m), resultado);
+    }
 }
