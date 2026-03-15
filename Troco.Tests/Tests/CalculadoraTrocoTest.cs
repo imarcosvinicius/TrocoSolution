@@ -1,5 +1,6 @@
 using Troco.Domain;
 using Troco.Domain.Exceptions;
+using Troco.Domain.Extensions;
 using Troco.Domain.Services;
 using Troco.Domain.Strategies;
 

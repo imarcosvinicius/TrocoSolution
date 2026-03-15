@@ -1,4 +1,4 @@
-namespace Troco.Domain;
+namespace Troco.Domain.Extensions;
 
 public static class TrocoExtensions
 {
