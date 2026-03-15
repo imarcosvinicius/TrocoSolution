@@ -1,10 +1,10 @@
 ﻿using Troco.Domain.Exceptions;
+using Troco.Domain.Interfaces;
 
-namespace Troco.Domain;
+namespace Troco.Domain.Strategies;
 
-public class CalculadoraTroco
+public class EstrategiaGreedy : ICalculadoraTroco
 {
-    
     private static readonly int[] Denominacoes = [10000, 5000, 1000, 500, 100, 50, 10, 5, 1];
 
     private static readonly Dictionary<int, decimal> ValoresDenominacoes = new()
