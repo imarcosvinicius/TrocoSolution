@@ -1,5 +1,6 @@
 using Troco.Domain;
 using Troco.Domain.Exceptions;
+using Troco.Domain.Extensions;
 using Troco.Domain.Services;
 using Troco.Domain.Strategies;
 
@@ -46,7 +47,7 @@ public class CalculadoraTrocoTest
     }
 
     [Fact]
-    public void Calcular_DeveLancarExecao_QuandoValorPagoInsuficiente()
+    public void Calcular_DeveLancarExcecao_QuandoValorPagoInsuficiente()
     {
         decimal valorCompra = 75.35m;
         decimal valorPago = 50.00m;

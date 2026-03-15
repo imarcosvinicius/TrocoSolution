@@ -24,14 +24,12 @@ public class EstrategiaGreedy : ICalculadoraTroco
         var troco = (int)Math.Round((valorPago - valorCompra) * 100);
         var resultado = new List<(int, decimal)>();
 
-        foreach (var it in Denominacoes)
+        foreach (var denominacao in Denominacoes)
         {
-            int quantidade = troco / it;
-            if (quantidade > 0)
-            {
-                resultado.Add((quantidade, ValoresDenominacoes[it]));
-                troco %= it;
-            }
+            var quantidade = troco / denominacao;
+            if (quantidade <= 0) continue;
+            resultado.Add((quantidade, ValoresDenominacoes[denominacao]));
+            troco %= denominacao;
         }
         
         return resultado;
