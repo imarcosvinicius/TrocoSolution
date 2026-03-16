@@ -1,5 +1,4 @@
-﻿using Troco.Domain.Exceptions;
-using Troco.Domain.Interfaces;
+﻿using Troco.Domain.Interfaces;
 
 namespace Troco.Domain.Strategies;
 
@@ -16,11 +15,6 @@ public class EstrategiaGreedy : ICalculadoraTroco
     
     public List<(int quantidade, decimal valor)> Calcular(decimal valorCompra, decimal valorPago)
     {
-        if (valorCompra > valorPago)
-        {
-            throw new ValorPagoInsuficienteException(valorCompra, valorPago);
-        }
-        
         var troco = (int)Math.Round((valorPago - valorCompra) * 100);
         var resultado = new List<(int, decimal)>();
 
