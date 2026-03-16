@@ -1,19 +1,13 @@
+using Troco.Domain.Enums;
 using Troco.Domain.Exceptions;
 using Troco.Domain.Extensions;
 using Troco.Domain.Services;
-using Troco.Domain.Strategies;
 
 namespace Troco.Tests.Tests;
 
 public class CalculadoraTrocoTest
 {
-    private readonly CalculadoraTrocoService _calculadoraTroco;
-
-    public CalculadoraTrocoTest()
-    {
-        var estrategy = new EstrategiaGreedy();
-        _calculadoraTroco = new CalculadoraTrocoService(estrategy);
-    }
+    private readonly CalculadoraTrocoService _calculadoraTroco = new(TipoAlgoritmo.Greedy);
 
     [Fact]
     public void Calcular_DeveRetornarValorTotalCorreto_QuandoValoresValidos()
