@@ -1,13 +1,14 @@
 using Troco.Domain.Enums;
 using Troco.Domain.Exceptions;
-using Troco.Domain.Extensions;
+using Troco.Domain.Factories;
+using Troco.Domain.Models;
 using Troco.Domain.Services;
 
 namespace Troco.Tests.Tests;
 
 public class CalculadoraTrocoTest
 {
-    private readonly CalculadoraTrocoService _calculadoraTroco = new(TipoAlgoritmo.Greedy);
+    private readonly CalculadoraTrocoService _calculadoraTroco = new(CalculadoraFactory.CriarCalculadoraTroco(TipoAlgoritmo.Greedy));
 
     [Fact]
     public void Calcular_DeveRetornarValorTotalCorreto_QuandoValoresValidos()
@@ -18,12 +19,12 @@ public class CalculadoraTrocoTest
 
         var resultado = _calculadoraTroco.Calcular(valorCompra, valorPago);
 
-        Assert.Equal(trocoEsperado, resultado.SomarTotal());
-        Assert.Contains((3, 10.00m), resultado);
-        Assert.Contains((2, 1.00m), resultado);
-        Assert.Contains((1, 0.50m), resultado);
-        Assert.Contains((1, 0.10m), resultado);
-        Assert.Contains((1, 0.05m), resultado);
+        Assert.Equal(trocoEsperado, resultado.Sum(troco => troco.Quantidade * troco.Valor));
+        Assert.Contains(new ItemTroco(3, 10.00m), resultado);
+        Assert.Contains(new ItemTroco(2, 1.00m), resultado);
+        Assert.Contains(new ItemTroco(1, 0.50m), resultado);
+        Assert.Contains(new ItemTroco(1, 0.10m), resultado);
+        Assert.Contains(new ItemTroco(1, 0.05m), resultado);
     }
 
     [Fact]
@@ -35,7 +36,7 @@ public class CalculadoraTrocoTest
 
         var resultado = _calculadoraTroco.Calcular(valorCompra, valorPago);
 
-        Assert.Equal(trocoEsperado, resultado.SomarTotal());
+        Assert.Equal(trocoEsperado, resultado.Sum(troco => troco.Quantidade * troco.Valor));
         Assert.Empty(resultado);
     }
 
@@ -58,14 +59,14 @@ public class CalculadoraTrocoTest
         const decimal trocoEsperado = 187.35m;
 
         var resultado = _calculadoraTroco.Calcular(valorCompra, valorPago);
-        Assert.Equal(trocoEsperado, resultado.SomarTotal());
-        Assert.Contains((1, 100.00m), resultado);
-        Assert.Contains((1, 50.00m), resultado);
-        Assert.Contains((3, 10.00m), resultado);
-        Assert.Contains((1, 5.00m), resultado);
-        Assert.Contains((2, 1.00m), resultado);
-        Assert.Contains((3, 0.10m), resultado);
-        Assert.Contains((1, 0.05m), resultado);
+        Assert.Equal(trocoEsperado, resultado.Sum(troco => troco.Quantidade * troco.Valor));
+        Assert.Contains(new ItemTroco(1, 100.00m), resultado);
+        Assert.Contains(new ItemTroco(1, 50.00m), resultado);
+        Assert.Contains(new ItemTroco(3, 10.00m), resultado);
+        Assert.Contains(new ItemTroco(1, 5.00m), resultado);
+        Assert.Contains(new ItemTroco(2, 1.00m), resultado);
+        Assert.Contains(new ItemTroco(3, 0.10m), resultado);
+        Assert.Contains(new ItemTroco(1, 0.05m), resultado);
     }
 
     [Theory]
